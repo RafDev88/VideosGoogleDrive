@@ -2,6 +2,11 @@
 
 Aplicativo desktop em `Vue 3 + Vite + Electron` para listar filmes e series que estao no seu Google Drive, buscar metadados no TMDb e reproduzir o video dentro do app usando `Video.js`.
 
+## Release atual
+
+- Versao inicial publicada: `0.1.0`
+- Historico de entregas: veja o arquivo `CHANGELOG.md`
+
 Agora o app tambem possui uma tela interna de configuracoes para editar os principais campos do `.env`, testar conexao com `TMDb` e `Google Drive`, extrair automaticamente o `Folder ID` a partir da URL da pasta e gerar o `Google Drive Refresh Token` sem depender do terminal.
 Tambem e possivel ativar importacao recursiva para ler videos dentro de subpastas da pasta principal do Drive.
 Na interface, episodios de series agora podem ser agrupados por titulo da serie e ordenados por temporada e episodio.
