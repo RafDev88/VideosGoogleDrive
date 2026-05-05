@@ -1,0 +1,60 @@
+{
+  "name": "gdrive-videos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Aplicativo desktop de filmes e series com Vue 3, Electron, Google Drive e TMDb.",
+  "main": "electron/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:web\" \"npm:dev:electron\"",
+    "dev:web": "vite",
+    "dev:electron": "wait-on tcp:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 node scripts/dev-electron.js",
+    "auth:google": "node scripts/google-oauth.js",
+    "build:web": "vite build",
+    "build": "npm run build:web && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
+    "electron-log": "^5.2.0",
+    "google-auth-library": "^9.15.1",
+    "googleapis": "^144.0.0",
+    "tailwind-merge": "^3.3.0",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.4",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^35.1.5",
+    "electron-builder": "^25.1.8",
+    "tailwindcss": "^4.1.4",
+    "vite": "^6.2.2",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "com.gdrivevideos.desktop",
+    "productName": "GDrive Videos",
+    "asar": true,
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
